@@ -37,6 +37,24 @@ EXPORTING
 4\.    Name the file what ever you want!
 
 
+UPDATING LEVEL OBJECTS
+
+If you made a level and put a bunch of objects that aren't up to date with current versions, don't worry.
+In this project there is a python file called "UpdateExistingObjects.py".
+
+Here are the steps to use it. 
+
+1. Open the level you want to update the objects.
+2. Do a quick check to make sure that the objects from the asset files are the updated versions. (Custom properties, transform, etc.)
+3. Open the scripting tab.
+4. Create a new Script and in it, paste the content of the UpdateExistingObjects.py script.
+5. Take the updated version from the Asset explorer and place it wherever in your level.
+(WARNING : The updated version needs to have the original name of the object. Example, if you wanted to update all of your springs. You'd need the newly placed spring to be called "Spring" not "Spring (1)".
+So make sure that you rename it to be the original name.)
+6. Select the newly placed object and run the script.
+Normally, every instance of that object should have been replaced by an updated one but should have kept their custom properties.
+
+The playground folder is ignored by the repo so you should be able to save your projects into it without affecting it. But you can still create personal folders in the Workbench folders for future access.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -63,3 +81,6 @@ Press " **T** " to soft quick reload, which is the same function as R, but keeps
 
 
 Any Question, reach out to @Diamax in the discord
+
+
+
