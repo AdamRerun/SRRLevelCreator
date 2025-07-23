@@ -2,6 +2,8 @@
 
 This is a level creator that uses blender to create the shape and geometry and then import it in unity.
 
+This was made with inspiration from Strix's work. Thanks a lot to him for his work and expertise.
+
 Steps :
 
 
@@ -54,7 +56,7 @@ So make sure that you rename it to be the original name.)
 6. Select the newly placed object and run the script.
 Normally, every instance of that object should have been replaced by an updated one but should have kept their custom properties.
 
-The playground folder is ignored by the repo so you should be able to save your projects into it without affecting it. But you can still create personal folders in the Workbench folders for future access.
+The playground folder is ignored by the repo so you should be able to save your projects into it without affecting your local repo.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
