@@ -1,5 +1,7 @@
 # Sonic Rush Rerun Level Creator
 
+WARNING : UPDATE ALL THE SCRIPTS IN YOUR BLENDS WHEN YOU CAN
+
 This is a level creator that uses blender to create the shape and geometry and then import it in unity.
 
 This was made with inspiration from Strix's work. Thanks a lot to him for his work and expertise.
