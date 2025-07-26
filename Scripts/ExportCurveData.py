@@ -13,26 +13,25 @@ class ExportAllCurvesOperator(bpy.types.Operator):
         data = []
 
         for obj in bpy.data.objects:
-            if obj.type == 'CURVE':
-                # Inside the execute() loop, where you're iterating splines:
+            if obj.type == 'CURVE' and 'rail' in obj.name.lower():
                 for spline in obj.data.splines:
                     if spline.type == 'BEZIER':
                         curve_points = []
-                        for point in spline.bezier_points:
-                            # Use local space directly (no matrix_world)
+                        reference_up = Vector((0, 1, 0))
+
+                        for i, point in enumerate(spline.bezier_points):
                             p = point.co
                             h1 = point.handle_left
                             h2 = point.handle_right
 
-                            # Compute tangent vector in local space
-                            tangent = (h2 - h1).normalized()
+                            tangent = (h1 - h2).normalized()
 
-                            # Default reference up vector
-                            reference_up = Vector((0, 1, 0))
                             if abs(tangent.dot(reference_up)) > 0.999:
                                 reference_up = Vector((-1, 0, 0))
 
                             normal = tangent.cross(reference_up).normalized()
+                            
+                            reference_up = normal.cross(tangent).normalized()
 
                             curve_points.append({
                                 'position': [-p.x, p.z, p.y],
@@ -40,7 +39,6 @@ class ExportAllCurvesOperator(bpy.types.Operator):
                                 'tangentOut': [-h2.x, h2.z, h2.y],
                                 'normal': [normal.x, normal.z, normal.y]
                             })
-
                         data.append({
                             'name': obj.name,
                             'curvePosition': [-obj.location.x, obj.location.z, obj.location.y],
@@ -48,7 +46,6 @@ class ExportAllCurvesOperator(bpy.types.Operator):
                         })
 
 
-        # Get blend file name without extension
         blend_path = bpy.data.filepath
         if not blend_path:
             self.report({'ERROR'}, "Please save your .blend file first.")

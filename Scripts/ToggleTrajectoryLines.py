@@ -133,4 +133,4 @@ def unregister():
 
 if __name__ == "__main__":
     register()
-    print("✅ Trajectory preview with toggle icon is enabled.")
+    print("Trajectory preview with toggle icon is enabled.")
