@@ -83,7 +83,7 @@ You may modify the geometry to make the roof sit higher and make the walls thick
 BUT
 It is your job to align the character's exit with the rest of the stage so the character doesnt fall off axis.
 It is your job to make sure passing through the loop is still possible.
-It is your job to make sure
+It is your job to make sure The collision mesh doesnt mess with the character's angle limitation.
 While some weird loops may need specific modification in engine, we will discuss those, making sure the collision mesh is usable is YOUR JOB.
 
 ***To export grind rails and splines, use the Export curve data script. It will make a button appear in the object contextual menu on the bottom right. (The Orange Square)***
