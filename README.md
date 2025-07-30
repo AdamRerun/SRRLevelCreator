@@ -61,7 +61,7 @@ Normally, every instance of that object should have been replaced by an updated 
 The playground folder is ignored by the repo so you should be able to save your projects into it without affecting your local repo.
 
 THO honestly you should save your work in the official Sonic Rush Rerun Asset Repo
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 
 
 Rules :
