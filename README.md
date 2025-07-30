@@ -61,24 +61,17 @@ Normally, every instance of that object should have been replaced by an updated 
 The playground folder is ignored by the repo so you should be able to save your projects into it without affecting your local repo.
 
 THO honestly you should save your work in the official [Sonic Rush Rerun Asset Repo](https://github.com/MelohRush/RushRerun-Repo)
-
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 Rules :
 If a mesh is Solid, Its name must contain "**Geometry**"
-
 If a mesh is Solid AND box shaped, Its name must/can contain "**BoxGeometry**"
-
 If a mesh is a OneWayPlatform, its name must contain "**OneWayPlatform**"
-
 If a mesh is a RollZone, it must be boxshaped and its name must contain "**RollZone**"
-
 If a mesh is a Breakable Wall, it must contain  "**Breakable**"
-
 If you want a mesh to be invisible but still collide, add "(Hide)" to its name.
-
 If you want a mesh to be a homing target, add "HomingTarget" to its name.
-
 You can make grind rails by using a bevier curve and adding/putting "Rail" in its name. Make sure it has the right orientation.
 
 ***EXPERIMENTAL*** You can make geometry splines by adding a bevier curve to its children and adding/putting "Path" in its name.
