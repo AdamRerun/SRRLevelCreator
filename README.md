@@ -60,6 +60,7 @@ Normally, every instance of that object should have been replaced by an updated 
 
 The playground folder is ignored by the repo so you should be able to save your projects into it without affecting your local repo.
 
+THO honestly you should save your work in the official Sonic Rush Rerun Asset Repo
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -71,6 +72,20 @@ If a mesh is a RollZone, it must be boxshaped and its name must contain "**RollZ
 If a mesh is a Breakable Wall, it must contain  "**Breakable**"
 If you want a mesh to be invisible but still collide, add "(Hide)" to its name.
 If you want a mesh to be a homing target, add "HomingTarget" to its name.
+You can make grind rails by using a bevier curve and adding/putting "Rail" in its name. Make sure it has the right orientation.
+**EXPERIMENTAL*** You can make geometry splines by adding a bevier curve to its children and adding/putting "Path" in its name.
+
+LOOP ASSETS : 
+Loop asset's geometry can be modified. But it's limited. You need to allow entry and exit for the character. So :
+you may increase the scale and lower it. -> This mostly works perfectly fine.
+You may modify the geometry to make the roof sit higher and make the walls thicker
+BUT
+It is your job to align the character's exit with the rest of the stage so the character doesnt fall off axis.
+It is your job to make sure passing through the loop is still possible.
+It is your job to make sure
+While some weird loops may need specific modification in engine, we will discuss those, making sure the collision mesh is usable is YOUR JOB.
+
+***To export grind rails and splines, use the Export curve data script. It will make a button appear in the object contextual menu on the bottom right. (The Orange Square)***
 **DO NOT** put the name of any stage objects inside geometry objects as they will be overriden by the object replacement.
 
 
