@@ -13,11 +13,13 @@ class ExportAllCurvesOperator(bpy.types.Operator):
         data = []
 
         for obj in bpy.data.objects:
-            if obj.type == 'CURVE' and 'rail' in obj.name.lower():
+            if obj.type == 'CURVE' and ('rail' in obj.name.lower() or 'path' in obj.name.lower()) :
+                # Inside the execute() loop, where you're iterating splines:
+                
                 for spline in obj.data.splines:
                     if spline.type == 'BEZIER':
                         curve_points = []
-                        reference_up = Vector((0, 1, 0))
+                        reference_up = Vector((0, 1, 0))  # initial up vector
 
                         for i, point in enumerate(spline.bezier_points):
                             p = point.co
@@ -26,11 +28,14 @@ class ExportAllCurvesOperator(bpy.types.Operator):
 
                             tangent = (h1 - h2).normalized()
 
+                            # Prevent gimbal lock
                             if abs(tangent.dot(reference_up)) > 0.999:
                                 reference_up = Vector((-1, 0, 0))
 
+                            # Compute normal with current reference_up
                             normal = tangent.cross(reference_up).normalized()
                             
+                            # Update reference_up for the next point (parallel transport)
                             reference_up = normal.cross(tangent).normalized()
 
                             curve_points.append({
@@ -39,13 +44,16 @@ class ExportAllCurvesOperator(bpy.types.Operator):
                                 'tangentOut': [-h2.x, h2.z, h2.y],
                                 'normal': [normal.x, normal.z, normal.y]
                             })
+                        parent = obj.parent.name if obj.parent else None
                         data.append({
                             'name': obj.name,
+                            'parent': parent,
                             'curvePosition': [-obj.location.x, obj.location.z, obj.location.y],
                             'points': curve_points
                         })
 
 
+        # Get blend file name without extension
         blend_path = bpy.data.filepath
         if not blend_path:
             self.report({'ERROR'}, "Please save your .blend file first.")
