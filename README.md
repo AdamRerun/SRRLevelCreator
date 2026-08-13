@@ -14,49 +14,21 @@ SETUP
 
 
 1. Export both files in the same folder.
-2. Open SRRLevelCreatorBlend.blend
+2. Open Tutorial.blend
 3. Go to Edit -> Preference -> File Paths
 4. In Asset Libraries, add the folder in which you have both files.
    - Set the import method as "Append (Reuse Data)"
 5. Then in the Asset Explorer, Refresh and you should have a library called the name of your folder!
+6. Go to Scripting
+7. In the Scripts Folder of this Repo, there should be a script called "Adam's Level Exporter". Import it to blender and Run it.
+8. Now in your layout scene, you should have a Unity tab with a button that says "Export Unity Project". This will be your main way of exporting your level.
+   8.1 - I advise right clicking the tab and pinning it so that it is always visible.
    
-
-Extra Help (WIP)
-
-1. Go to Scripting
-2. There should be a file called Toggle Trajectory Lines, Run it.
-3. You'll have a new little menu called Trajectory where you can toggle trajectory previews when selecting objects. (Only works on springs and Dash Rings for now.)
-
-
-
-EXPORTING
-
-
-1. Select "**File"**, then scroll down to the "**Export**" option, then click "**glTF 2.0**"
-2. over on the right side, select the "**Include**" drop-down menu, then toggle "**Custom** **Properties**"
-3. toggle "**Remember Export Settings**" above said drop-menu
-
-&nbsp;(Step 3 is optional, but it will save your setting so you dont have to re-select "custom properties" every time you export)
-
-4\.    Name the file what ever you want!
-
-
 UPDATING LEVEL OBJECTS
 
 If you made a level and put a bunch of objects that aren't up to date with current versions, don't worry.
 In this project there is a python file called "UpdateExistingObjects.py".
 
-Here are the steps to use it. 
-
-1. Open the level you want to update the objects.
-2. Do a quick check to make sure that the objects from the asset files are the updated versions. (Custom properties, transform, etc.)
-3. Open the scripting tab.
-4. Create a new Script and in it, paste the content of the UpdateExistingObjects.py script.
-5. Take the updated version from the Asset explorer and place it wherever in your level.
-(WARNING : The updated version needs to have the original name of the object. Example, if you wanted to update all of your springs. You'd need the newly placed spring to be called "Spring" not "Spring (1)".
-So make sure that you rename it to be the original name.)
-6. Select the newly placed object and run the script.
-Normally, every instance of that object should have been replaced by an updated one but should have kept their custom properties.
 
 The playground folder is ignored by the repo so you should be able to save your projects into it without affecting your local repo.
 
@@ -76,7 +48,33 @@ You can make grind rails by using a bevier curve and adding/putting "Rail" in it
 
 ***EXPERIMENTAL*** You can make geometry splines by adding a bevier curve to its children and adding/putting "Path" in its name.
 
-LOOP ASSETS : 
+Rails :
+In Object Mode, Add A Bezier Curve to the scene.
+
+Step 1. Tilt the Rail 90 degrees so that its normal are aligned with the level (Ctrl + T -> 90)
+Step 2. Place your Bezier's Points to sculpt your Spline.
+Step 3. In the Object Data Properties, In Geometry, Look for the Bevel section and set the Depth to something between .20 and .30 meters (.25m is perfect)
+Step 4. Set the Offset to the same value as the Depth (This is to make it so the TOP of the rail is where Sonic bases himself. Depending on the tilt rotation, it should either be the value of the depth or its value negated.)
+Step 5. Rename the curve so that the word "Rail" is contained in it.
+
+LOOP ASSETS :
+In The Asset Library, there should be an asset called Adam's Perfect Loop.
+This Asset will be your base when adding loops to your project.
+You can directly edit the Trigger Box (Box in which sonic gets attached to the loop)
+and the spline (Z position of sonic when in the loop)
+You can also scale it up and down (Press S -> Shift + Y To edit its size in the X and Z axis without modifying its depth).
+
+[WARNING]
+
+1. The spline must end OUTSIDE of the trigger box.
+2. You may not rename any of the parts of Adam's Perfect Loop.
+3. You can Edit the geometry of the loop but you must also edit the Path spline AND the Trigger Box to ensure they work.
+4. These things are YOUR responsibility. Not mine.
+
+
+
+
+(Deprecated -> The Old loops should still be working but please use the asset called Adam's Perfect Loop when putting loops in your level)
 Loop asset's geometry can be modified. But it's limited. You need to allow entry and exit for the character. So :
 you may increase the scale and lower it. -> This mostly works perfectly fine.
 You may modify the geometry to make the roof sit higher and make the walls thicker
