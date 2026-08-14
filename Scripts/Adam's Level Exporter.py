@@ -8,7 +8,7 @@ import json
 
 from bpy.types import Panel, Operator
 from bpy.props import StringProperty
-
+from mathutils import Vector
 
 DEFAULT_OUTPUT_FILE = r"C:\UnityProject.rrn"
 
@@ -113,7 +113,10 @@ def export_spline(obj, filepath):
             "TangentZ",
             "Tangent2X",
             "Tangent2Y",
-            "Tangent2Z"
+            "Tangent2Z",
+            "NormalX",
+            "NormalY",
+            "NormalZ"
         ])
 
         for spline in obj.data.splines:
@@ -126,7 +129,21 @@ def export_spline(obj, filepath):
                 position = obj.matrix_world @ point.co
                 right_handle = obj.matrix_world @ point.handle_right
                 left_handle = obj.matrix_world @ point.handle_left
+                reference_up = obj.matrix_world.to_3x3() @ Vector((0, 1, 0))
 
+                tangent = right_handle - left_handle
+                tangent.normalize()
+                
+                
+                
+                normal = reference_up.cross(tangent)
+                if normal.length < 0.0001:
+                    reference_up = obj.matrix_world.to_3x3() @ Vector((0, 0, 1))
+                    normal = reference_up.cross(tangent)
+
+                normal.normalize()
+                
+                
                 writer.writerow([
                     -position.x,
                     position.z,
@@ -136,7 +153,10 @@ def export_spline(obj, filepath):
                     -left_handle.y,
                     -right_handle.x,
                     right_handle.z,
-                    -right_handle.y
+                    -right_handle.y,
+                    -normal.x,
+                    normal.z,
+                    -normal.y
                 ])
 
 
